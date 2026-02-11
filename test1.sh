@@ -1,6 +1,6 @@
 #!/bin/bash
 #time to get cooked
-GUESS=$(($RANDOM % 10 + 1))
+NUMBER=$(($RANDOM % 10 + 1))
 #define Variable,
 #$ equals the variable, random is a bash varible that pickes from 0-9, +1 bumps i to 1-10
 ATTEMPTS=0
@@ -13,9 +13,29 @@ while true; do
 #creates infinite loop by repeating the code until number is guessed
 	read -p "Your guess:" GUESS
 # take in user input, -p gives a prompt to a user and stores it in GUESS
-if [[ $GUESS =~ ]]; then
-	#statements
-fiif !
+	if [[ $GUESS =~ ^[0-9]=$ ]]; then
+		echo "that is not the number loser, try again."
+		continue
 #checks if the input given is a number input or not
+#its wrong so repeat to next loop
+	fi
+
+	ATTEMPTS=$((ATTEMPTS + 1))
+
+	if ["$GUESS" - lt "NUMBER"]; then
+		#if the user input is "lower than the number, then tell them, same with greater than"
+		echo "too low"
+	elif ["$GUESS" - gt "NUMBER"]; then
+		echo "too high"
+		#elif checks if and elif at the same time, if its true then it runs the code
+	else echo "YOU DID IT YOU ARE VERY SMART"
+		break
+		#if if and elif are both false, then else is run and breaks the infinite loop
+	fi
+done
+#ends 'while' loop thus ending script
+
+
+
 
 
