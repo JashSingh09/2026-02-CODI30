@@ -13,23 +13,27 @@ while true; do
 #creates infinite loop by repeating the code until number is guessed
 	read -p "Your guess:" GUESS
 # take in user input, -p gives a prompt to a user and stores it in GUESS
-	if [[ $GUESS =~ ^[0-9]=$ ]]; then
+	if ! [[ $GUESS =~ ^[0-9]+$ ]]; then
 		echo "that is not the number loser, try again."
 		continue
 #checks if the input given is a number input or not
 #its wrong so repeat to next loop
+#! symbol makes it inverted to catch invalid inputs
 	fi
 
 	ATTEMPTS=$((ATTEMPTS + 1))
 
-	if ["$GUESS" - lt "NUMBER"]; then
+	if [ "$GUESS" -lt "$NUMBER" ]; then
 		#if the user input is "lower than the number, then tell them, same with greater than"
 		echo "too low"
-	elif ["$GUESS" - gt "NUMBER"]; then
+	elif [ "$GUESS" -gt "$NUMBER" ]; then
 		echo "too high"
 		#elif checks if and elif at the same time, if its true then it runs the code
-	else echo "YOU DID IT YOU ARE VERY SMART"
+		#spacing very important for reasons my teensy tiny cranium can not comprehend
+	else 
+		echo "YOU DID IT YOU ARE VERY SMART"
 		break
+		#for some reason its better to put a echo after the elif but thats ok
 		#if if and elif are both false, then else is run and breaks the infinite loop
 	fi
 done
