@@ -6,9 +6,7 @@ foo=14
 tar=sixteen
 
 
-
-
-
+lol_function()()
 var_a= "One"
 var_b="Two" 
 
@@ -19,6 +17,6 @@ menu_options()(
 	|
 	|
 '
-
+)
 
 #case statements do incase of this, do this option, has a lot of syntax that is useful, lazy version of if statements, you can check simple logic
